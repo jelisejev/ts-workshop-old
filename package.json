@@ -1,0 +1,11 @@
+{
+  "name": "ts-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-backend": "node backend/bin/www"
+  },
+  "author": "",
+  "license": "ISC"
+}
