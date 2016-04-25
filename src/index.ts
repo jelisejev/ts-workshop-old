@@ -15,12 +15,34 @@ class CssStatsComponent {
     this.elem.find('.rules').text(rules.total);
     this.elem.find('.selectors').text(selectors.total);
     
+    this.renderColors(declarations);
+    this.renderChart(selectors);
+  }
+  
+  private renderColors(declarations: Declarations) {
     const colorContainer: JQuery = this.elem.find('.colors');
     this.getUniqueColors(declarations).forEach((color: string) => {
       $('<div class="col-md-3"></div>')
         .text(color)
         .css('background', color)
         .appendTo(colorContainer);
+    });
+  }
+  
+  private renderChart(selectors: Selectors) {
+    $('.chart', this.elem).highcharts({
+      chart: {
+        type: 'bar',
+        height: 800
+      },
+      title: {
+        text: 'Selector specificity'
+      },
+      series: [{
+        name: 'Selectors',
+        data: selectors.specificity.graph
+      }],
+        
     });
   }
   
@@ -44,16 +66,21 @@ interface CssStatsData {
     rules: {
       total: number;
     };
-    selectors: {
-      total: number;
-    };
-    declarations: Declarations
+    selectors: Selectors;
+    declarations: Declarations;
   }
 }
 
 interface Declarations {
   properties: {
     color: Array<string>  
+  };
+}
+
+interface Selectors {
+  total: number;
+  specificity: {
+    graph: Array<number>;
   };
 }
 
