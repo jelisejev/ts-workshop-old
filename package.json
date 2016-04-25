@@ -12,9 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "handlebars": "^4.0.5",
-    "jquery": "^2.2.3",
-    "mustache": "^2.2.1"
+    "jquery": "^2.2.3"
   },
   "devDependencies": {
     "typescript": "^1.8.10",

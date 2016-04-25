@@ -1,6 +1,5 @@
 {
   "ambientDependencies": {
-    "jquery": "registry:dt/jquery#1.10.0+20160417213236",
-    "mustache": "registry:dt/mustache#0.8.2+20160316155526"
+    "jquery": "registry:dt/jquery#1.10.0+20160417213236"
   }
 }
