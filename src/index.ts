@@ -4,23 +4,16 @@ class CssStatsComponent {
   public constructor(private elem: JQuery) {
   }
 
-  render() {
-    this.renderForm();
+  init() {
+    this.elem.find('.analyze').click(() => this.loadStats($('input', this.elem).val()))
   }
   
-  private renderForm() {
-    const inputGroup = $('<div class="input-group"></div>')
-      .append('<input type="text" class="form-control" value="http://twitter.com">')
-      .appendTo(this.elem);
+  private renderResults(data: CssStatsData) {
+    const {rules, selectors} = data.stats;
     
-    $('<span class="input-group-btn"></span>')
-        .append('<button class="btn btn-default" type="button">Analyze</button>')
-        .click(() => this.loadStats($('input', this.elem).val()))
-        .appendTo(inputGroup);
-  }
-  
-  private renderResults(data) {
-    $('<pre></pre>').text(JSON.stringify(data)).appendTo(this.elem);  
+    this.elem.find('.results').removeClass('hidden');
+    this.elem.find('.rules').text(rules.total);
+    this.elem.find('.selectors').text(selectors.total);
   }
 
   loadStats(url: string) {
@@ -28,4 +21,15 @@ class CssStatsComponent {
   }
 }
 
-new CssStatsComponent($('#css-stats')).render();
+interface CssStatsData {
+  stats: {
+    rules: {
+      total: number;
+    };
+    selectors: {
+      total: number;
+    };
+  }
+}
+
+new CssStatsComponent($('#css-stats')).init();

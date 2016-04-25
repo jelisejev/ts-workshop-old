@@ -7,8 +7,20 @@
   </head>
   <body>
     <div class="container" id="css-stats">
-    </div>
-
+      <div class="input-group">
+          <input type="text" class="form-control" value="http://twitter.com">
+          <span class="input-group-btn">
+            <button class="btn btn-default analyze" type="button">Analyze</button>
+          </span>
+      </div>
+      <div class="results hidden">
+        <p>
+          Rules: <strong class="rules"></strong>
+        </p>
+        <p>
+          Selectors: <strong class="selectors"></strong>
+        </p>
+      </div>
     </div>
   </body>
   <script src="node_modules/jquery/dist/jquery.js"></script>
